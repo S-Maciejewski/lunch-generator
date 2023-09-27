@@ -1,8 +1,8 @@
 import './style.scss';
 
-export function Home() {
+export function Generator() {
 	return (
-		<div class="home">
+		<div class="generator">
 			Generator obiadów
 		</div>
 	);
