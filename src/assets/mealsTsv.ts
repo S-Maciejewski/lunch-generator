@@ -1,3 +1,4 @@
+export const mealsTsv: string = `
 id	name	tags
 1	Dorsz w sosie pomidorowym z ryżem	ryba,ryż
 2	Zupa krem z cukini z grzankami z mozarellą	zupa,ciepłe
@@ -24,3 +25,4 @@ id	name	tags
 23	Risotto ze szparagami	Ryż, szparagi
 24	Bułeczki Bao z indykiem	indyk
 25	Pity z kurczakiem	kurczak,rukola
+`

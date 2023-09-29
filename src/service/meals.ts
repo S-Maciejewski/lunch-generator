@@ -1,10 +1,5 @@
-const mealsTsv: string = `
-id	name	tags
-1	Dorsz w sosie pomidorowym z ryżem	ryba,ryż
-2	Zupa krem z cukini z grzankami z mozarellą	zupa,ciepłe
-3	Zupa krem pomidorowy z makaronem orzo	zupa,ciepłe
-4	Makaron z sosem z pieczonej papryki (Cheetos)	makaron
-`
+import { mealsTsv } from "../assets/mealsTsv";
+
 export type Meal = {
     id: string,
     name: string,
@@ -23,7 +18,7 @@ export const getMeals = (): Meal[] => {
         const columns = row.split('\t');
         const id = columns[0];
         const name = columns[1];
-        const tags = columns[2].split(',');
+        const tags = columns[2].split(',').map(tag => tag.trim().toLowerCase());
         mealsList.push({ id: id, name: name, tags: tags });
     });
 
