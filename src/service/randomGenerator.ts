@@ -13,7 +13,6 @@ const getRandomMeal = (choices: Meal[]): Meal => {
 export const suggestMeal = (): Meal => {
     if (mealHistory.getHistory().length === 0) {
         const meal = getRandomMeal(meals);
-        // mealHistory.pushToHistory(meal.id);
         return meal;
     }
 
