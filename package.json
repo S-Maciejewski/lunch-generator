@@ -1,7 +1,7 @@
 {
-	"name": "example",
-	"private": true,
-	"type": "module",
+	"name": "lunch-generator",
+	"version": "1.0.0",
+	"homepage": "https://s-maciejewski.github.io/lunch-generator",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",

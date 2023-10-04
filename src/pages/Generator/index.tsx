@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { mealAccepted, suggestMeal } from '../../service/randomGenerator';
+import { mealAccepted, mealRejected, suggestMeal } from '../../service/heuristicGenerator';
 import './style.scss';
 import { Meal } from '../../service/meals';
 
@@ -18,40 +18,45 @@ export function Generator() {
 	}
 
 	const handleReject = () => {
+		mealRejected(meal.id);
 		setMeal(suggestMeal());
 	}
 
 	const handleNew = () => {
-		setMeal(suggestMeal());
 		setAccepted(false);
-		console.log('new', accepted)
+		setMeal(suggestMeal());
 	}
 
 	return (
-		<div class="generator">
+		<div>
 			Generator obiadów
-			<p>
-				Czy masz ochotę na...
-			</p>
-			<p>
-				{meal.name}
-			</p>
 			{
 				!accepted &&
-				<div class="controls">
-					<button class="button" onClick={handleAccept}>
-						Tak
-					</button>
-					<button class="button" onClick={handleReject}>
-						Nie
-					</button>
+				<div class="generator">
+					<p>
+						Czy masz ochotę na...
+					</p>
+					<p>
+						{meal.name}
+					</p>
+					<div class="controls">
+						<button class="button" onClick={handleAccept}>
+							Tak
+						</button>
+						<button class="button" onClick={handleReject}>
+							Nie
+						</button>
+					</div>
 				</div>
 			}
 			{
 				accepted &&
 				<div>
 					<p>
-						Smacznego! Dodano do listy obiadów.
+						Smacznego!
+					</p>
+					<p>
+						Dodano {meal.name} do listy obiadów.
 					</p>
 					<div class="controls">
 						<button class="button" onClick={handleNew}>
@@ -59,8 +64,8 @@ export function Generator() {
 						</button>
 					</div>
 				</div>
-
 			}
 		</div>
+
 	);
 }
