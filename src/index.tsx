@@ -6,6 +6,7 @@ import { Generator } from './pages/Generator/index.js';
 import { NotFound } from './pages/_404.jsx';
 import './style.scss';
 import { Meals } from './pages/Meals/index.js';
+import { BASE_URL } from './env.js';
 
 export function App() {
 	return (
@@ -13,8 +14,8 @@ export function App() {
 			<Header />
 			<main>
 				<Router>
-					<Route path="/" component={Generator} />
-					<Route path="/obiady" component={Meals} />
+					<Route path={BASE_URL} component={Generator} />
+					<Route path={`${BASE_URL}/obiady`} component={Meals} />
 					<Route default component={NotFound} />
 				</Router>
 			</main>
