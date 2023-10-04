@@ -3,12 +3,11 @@ import { Meal, getMeals } from "./meals";
 
 export class MealHistorySingleton {
     private static instance: MealHistorySingleton;
-    
+
     ids: string[]
 
     private constructor() {
-        // TODO: Store in session
-        this.ids = [];
+        this.ids = JSON.parse(sessionStorage.getItem('mealHistory')) || [];
     }
 
     static getInstance(): MealHistorySingleton {
@@ -25,5 +24,6 @@ export class MealHistorySingleton {
 
     pushToHistory(id: string): void {
         this.ids.push(id);
+        sessionStorage.setItem('mealHistory', JSON.stringify(this.ids));
     }
 }
