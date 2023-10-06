@@ -2,6 +2,7 @@ import { MealHistorySingleton } from "./mealHistory";
 import { Meal, getMeals } from "./meals";
 
 const BINDING_TAGS = ['kurczak', 'indyk', 'rukola'];
+const REVERSE_BINDING_TAGS = ['ciepłe', 'szparagi'];
 
 const meals: Meal[] = getMeals();
 const mealHistory = MealHistorySingleton.getInstance();
@@ -47,6 +48,17 @@ const getBindingTagSuggestions = (recentMeals: Meal[]): Meal[] => {
     return suggestions;
 }
 
+const getBindingRejections = (rejectedMealId: string): string[] => {
+    let rejections: string[] = [];
+    REVERSE_BINDING_TAGS.forEach(tag => {
+        rejections = [...rejections,
+        ...meals.filter(meal => meal.tags.includes(tag)
+            && meal.id !== rejectedMealId)
+            .map(meal => meal.id)]
+    });
+    return rejections;
+}
+
 const getHeuristicChoice = (): Meal => {
     const recentMeals = getRecentMeals(4);
     logObj['recentMeals'] = recentMeals;
@@ -72,5 +84,6 @@ export const mealAccepted = (id: string): void => {
 
 export const mealRejected = (id: string): void => {
     rejectedIds.push(id);
+    rejectedIds.push(...getBindingRejections(id));
     logObj['rejectedIds'] = rejectedIds;
 }
