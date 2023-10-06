@@ -6,7 +6,7 @@ const REVERSE_BINDING_TAGS = ['ciepłe', 'szparagi'];
 
 const meals: Meal[] = getMeals();
 const mealHistory = MealHistorySingleton.getInstance();
-const rejectedIds: string[] = [];
+let rejectedIds: string[] = [];
 const logObj = {};
 
 const getRandomMeal = (choices: Meal[]): Meal => {
@@ -85,5 +85,6 @@ export const mealAccepted = (id: string): void => {
 export const mealRejected = (id: string): void => {
     rejectedIds.push(id);
     rejectedIds.push(...getBindingRejections(id));
+    rejectedIds = [...new Set(rejectedIds)];
     logObj['rejectedIds'] = rejectedIds;
 }
