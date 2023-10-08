@@ -30,7 +30,6 @@ export function Generator() {
 
 	return (
 		<div>
-
 			<div class="generator-container">
 				Generator obiadów
 				{

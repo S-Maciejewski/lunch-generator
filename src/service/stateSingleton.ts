@@ -46,6 +46,11 @@ export class StateSingleton {
         this.saveState();
     }
 
+    clearHistory(): void {
+        this.stateObj['history'] = [];
+        this.saveState();
+    }
+
     updateState(key: string, value: any): void {
         this.stateObj[key] = value;
         this.saveState();

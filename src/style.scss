@@ -61,10 +61,14 @@ main {
   text-align: center;
 }
 
-@media (max-width: 639px) {
-  main {
-    margin: 2rem;
-  }
+// @media (max-width: 639px) {
+//   main {
+//     margin: 2rem;
+//   }
+// }
+
+button {
+  padding: 0.5rem;
 }
 
 // Default dark theme

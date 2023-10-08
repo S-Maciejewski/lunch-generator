@@ -1,5 +1,8 @@
-.controls {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: space-around;
+.generator-container {
+  margin-bottom: 2rem;
+  .controls {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+  }
 }
