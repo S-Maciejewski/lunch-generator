@@ -13,7 +13,6 @@ export class StateSingleton {
     stateObj: State;
 
     private constructor() {
-        // this.ids = JSON.parse(sessionStorage.getItem('mealHistory')) || [];
         this.stateObj = JSON.parse(sessionStorage.getItem('stateObj')) || {
             history: [],
             recentMeals: [],
@@ -30,6 +29,10 @@ export class StateSingleton {
         return StateSingleton.instance;
     }
 
+    private saveState(): void {
+        sessionStorage.setItem('stateObj', JSON.stringify(this.stateObj));
+    }
+
     getHistory(): string[] {
         return this.stateObj['history'] || [];
     }
@@ -40,12 +43,11 @@ export class StateSingleton {
 
     pushToHistory(id: string): void {
         this.stateObj['history'].push(id);
-        // sessionStorage.setItem('mealHistory', JSON.stringify(this.ids));
-        sessionStorage.setItem('stateObj', JSON.stringify(this.stateObj));
+        this.saveState();
     }
 
     updateState(key: string, value: any): void {
         this.stateObj[key] = value;
-        sessionStorage.setItem('stateObj', JSON.stringify(this.stateObj));
+        this.saveState();
     }
 }

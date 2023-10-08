@@ -7,6 +7,7 @@ import { NotFound } from './pages/_404.jsx';
 import './style.scss';
 import { Meals } from './pages/Meals/index.js';
 import { BASE_URL } from './env.js';
+import { MealHistoryPage } from './pages/MealHistory/MealHistory.js';
 
 export function App() {
 	return (
@@ -16,6 +17,7 @@ export function App() {
 				<Router>
 					<Route path={BASE_URL} component={Generator} />
 					<Route path={`${BASE_URL}/obiady`} component={Meals} />
+					<Route path={`${BASE_URL}/historia`} component={MealHistoryPage} />
 					<Route default component={NotFound} />
 				</Router>
 			</main>

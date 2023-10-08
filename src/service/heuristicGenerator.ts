@@ -23,7 +23,7 @@ export const suggestMeal = (): Meal => {
     return getHeuristicChoice();
 }
 
-const getRecentMeals = (n: number): Meal[] => {
+export const getRecentMeals = (n: number): Meal[] => {
     const history = state.getHistory();
     if (history.length < n) {
         return history.map(mealId => meals.find(meal => meal.id === mealId)) as Meal[];
